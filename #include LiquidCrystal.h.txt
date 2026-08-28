@@ -1,0 +1,35 @@
+#include <LiquidCrystal.h>
+LiquidCrystal lcd(2,3,4,5,6,7);
+float value;
+float milivolt;
+float tempC;
+float tempF;
+
+void setup() 
+{
+  lcd.begin(20,4);
+}
+
+void loop() 
+{
+  value= analogRead(A0);
+  milivolt = (value*5000.0)/1024.0;
+  tempC = milivolt/10.0;
+  tempF = (tempC*(9.0/5.0))+32.0;
+  lcd.setCursor(7,0);
+  lcd.print("KKBAU");
+  lcd.setCursor(0,1);
+  lcd.print("Digital Thermometer");
+  lcd.setCursor(0,2);
+  lcd.print("Temp=");
+  lcd.print(tempC,1);
+  lcd.print(char(223));
+  lcd.print("C  ");
+  lcd.print(tempF,1);
+  lcd.print(char(223));
+  lcd.print("F");
+  lcd.setCursor(0,3);
+  lcd.print("Salam,Nawshin,Hasan");
+  delay(2000);
+
+}
